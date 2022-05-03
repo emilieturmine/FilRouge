@@ -1,0 +1,65 @@
+DELIMITER | CREATE PROCEDURE p_caht_par_fournisseur(
+    IN p_fournisseur VARCHAR(20),
+    OUT p_CAHT INT (10)
+) BEGIN
+SELECT
+    fou_nom AS "Nom fournisseur ",
+    SUM(
+        (
+            ligne_de_commande.li_montant - (
+                (utilisateur.uti_coef / 100) * ligne_de_commande.li_montant
+            )
+        ) INTO p_CAHT
+        FROM
+            ligne_de_commande
+            JOIN utilisateur ON utilisateur.uti_id = ligne_de_commande.li_uti_id
+            JOIN produit ON produit.pro_id = ligne_de_commande.pro_id
+            JOIN fournisseur ON fournisseur.fou_id = produit.fou_id
+        WHERE
+            fou_nom = p_fournisseur;
+
+END | DELIMITER;
+
+--2
+DELIMITER | CREATE PROCEDURE p_caht_par_fournisseur(
+    IN p_fournisseur VARCHAR(20),
+    OUT p_caht INT (10)
+) BEGIN
+SELECT
+    fou_nom AS "Nom fournisseur ",
+    SUM(
+        (
+            ligne_de_commande.li_montant - (
+                (utilisateur.uti_coef / 100) * ligne_de_commande.li_montant
+            )
+        ) INTO p_caht
+        FROM
+            ligne_de_commande
+            JOIN utilisateur ON utilisateur.uti_id = ligne_de_commande.li_uti_id
+            JOIN produit ON produit.pro_id = ligne_de_commande.pro_id
+            JOIN fournisseur ON fournisseur.fou_id = produit.fou_id
+        WHERE
+            fou_nom = p_fournisseur;
+
+END | DELIMITER;
+
+DELIMITER | CREATE PROCEDURE p_caht_par_fournisseur(
+    IN p_fournisseur VARCHAR(20),
+    OUT p_caht INT (10)
+) BEGIN
+SELECT
+    fou_nom AS "Nom fournisseur ",
+    SUM(
+        ligne_de_commande.li_montant - (
+            (utilisateur.uti_coef / 100) * ligne_de_commande.li_montant
+        )
+    ) INTO p_caht
+FROM
+    ligne_de_commande
+    JOIN utilisateur ON utilisateur.uti_id = ligne_de_commande.li_uti_id
+    JOIN produit ON produit.pro_id = ligne_de_commande.pro_id
+    JOIN fournisseur ON fournisseur.fou_id = produit.fou_id
+WHERE
+    fou_nom = p_fournisseur;
+
+END | DELIMITER;
