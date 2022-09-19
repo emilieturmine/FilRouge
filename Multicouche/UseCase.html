@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title> Cas d'utilisation Fil Rouge</title>
+</head>
+
+<body>
+    <h1>scenario commande</h1>
+
+
+
+
+<h3>1)Description :</h3>
+<p>Ce cas d’utilisation permet de saisir les informations concernant une commande faite par un client.
+</p>
+<h3>2) Flux d’évènements (Workflow):</h3>
+<h5>a. Conditions</h5>
+<p>Le client est un client particulier,il realise lui mm la saisie de la commande.
+</p>
+<p>Le client doit déjà être répertorié.
+</p>
+<p>Il n'y as pas de rupture de stock
+</p>
+<h5>b. Résultats</h5>
+<p>Une commande client est enregistrée.</p>
+<p>Les informations concernant le client sont mises à jour.</p>
+<p>Le règlement est enregistré ,la facture éditée et un bon de livraison est mis en place</p>
+
+<h3>3)Flot Nominal</h3>
+
+<p>->le client s'identifie<br><br>
+<- le systeme affiche la fiche client<br><br>
+
+->le client demande l'acces au catalogue<br><br>
+<-le systeme affiche le catalogue<br><br>
+
+->le client choisit une categorie<br><br>
+<-le systeme affiche la categorie choisit<br><br>
+
+->le client choisit une sous categorie<br><br>
+<-le systeme affiche la sous categorie choisit<br><br>
+->le client choisit un produit<br><br>
+<-le systeme affiche le produit choisit<br><br>
+->le client souhaite mettre le produit dans le panier<br><br>
+<->le systeme met le produit choisit dans le panier<br><br>
+<-le systeme demande la quantité souhaitée <br><br>
+->le client saisit la quantitée souhaitée<br><br>
+<->le systeme enregistre la quantité souhaitée<br><br>
+<->le systeme calcul le montant du panier<br><br>
+<-le systeme propose de finaliser la commande<br><br>
+->le client valide le panier<br><br>
+<-le systeme  demande l'adresse de facturation<br><br>
+->le client saisie l'adresse de facturation<br><br>
+<-le systeme  demande le mode de livraison<br><br>
+->le client saisie le mode de livraison<br><br>
+<-le systeme  demande l'adresse de livraison<br><br>
+->le client saisie l'adresse de livraison<br><br>
+<-le systeme  demande confirmation de la commande<br><br>
+->le client confirme la commande<br><br>
+<->le systeme calcule le montant finale de la commande<br><br>
+<- le systeme demande le reglement de la commande<br><br>
+->le client regle la commande<br><br>
+<- le systeme confirme le reglement de la commande<br><br>
+<->le systeme enregistre les informations de la commande<br><br>
+<->le systeme edite une facture et un bon de livraison<br><br>
+<->le systeme associe et archive les informations a la fiche client<br><br>
+<->le systeme transfert le bon de livraison<br><br>
+<-le systeme renvoit a la page d'acceuil<br><br>
+</p>
+<p>Le cas d’utilisation prend fin.</p><br><br>
+
+
+<h3>3)Flots alternatifs</h3>
+<h5>a. Le client n’est pas répertorié</h5>
+<p><-le systeme n'autorise pas la commande<br><br>
+->le client demande a s'inscrire<br><br>
+ Une fois l'inscription faite le cas d'utilisation peut reprendre<br><br>
+</p>
+ <h5>b. Les coordonnées du client sont erronées</h5>
+ <p>Le système a détecté qu’une ou plusieurs informations saisies concernant le client sont absentes ou comportent des
+ erreurs :<br><br>
+ <- Le système signale les informations en erreur.<br><br>
+ -> Le client corrige les erreurs.<br><br>
+ <-> Ceci se répète jusqu’à ce que le système ne détecte plus d’erreur. <br><br>
+ </p>
+ <h5>c. Il n’y a pas la référence en stock</h5>
+<p><-> Le système recherche le délai de livraison.<br><br>
+<-> Si le délai est accepté par le client, le scénario normal reprend.<br><br>
+<-> Sinon, il y a abandon de la procédure en cours.<br><br>
+</p>
+<h5>e. Le règlement ne peut pas être enregistré</h5>
+<p><-> Le cas d’utilisation prend fin.</p>
+
+<h5>f. La prise de commande n’est pas confirmée</h5>
+<p><-> Le système annule le règlement s’il a été enregistré<br><br>
+<-> Le cas d’utilisation prend fin.</p><br><br>
+<h5>g. Abandon a tout moment du processus</h5>
+<p><-> Le cas d’utilisation prend fin.</p>
+</p>
+</body>
+</html>

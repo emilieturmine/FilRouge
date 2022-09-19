@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Database>
+   <Name>VillageGreen</Name>
+   <Table>
+      <Name>Categorie</Name>
+      <Column>
+         <Name>cat_id</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+      </Column>
+      <Column>
+         <Name>cat_nom</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL UNIQUE</Property>
+      </Column>
+      <Column>
+         <Name>cat_pho</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>cat_id_1</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>cat_id</Key>
+      </PK>
+      <AK>
+         <Key>cat_nom</Key>
+      </AK>
+      <FK>
+         <Key>cat_id_1</Key>
+         <Reference>Categorie(cat_id)</Reference>
+      </FK>
+   </Table>
+   <Table>
+      <Name>fournisseur</Name>
+      <Column>
+         <Name>fou_id</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+      </Column>
+      <Column>
+         <Name>fou_nom</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>fou_adr</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>fou_cp</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>fou_vil</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>fou_id</Key>
+      </PK>
+   </Table>
+   <Table>
+      <Name>utilisateur</Name>
+      <Column>
+         <Name>uti_id</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+      </Column>
+      <Column>
+         <Name>uti_pse</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL UNIQUE</Property>
+      </Column>
+      <Column>
+         <Name>uti_mdp</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL UNIQUE</Property>
+      </Column>
+      <Column>
+         <Name>uti_nom</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>uti_pre</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>uti_ema</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL UNIQUE</Property>
+      </Column>
+      <Column>
+         <Name>uti_rol</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>uti_adr</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>uti_cp</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>uti_vil</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>uti_coe</Name>
+         <Type>DECIMAL(15,2)  </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>uti_id_1</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+      </Column>
+      <PK>
+         <Key>uti_id</Key>
+      </PK>
+      <AK>
+         <Key>uti_pse</Key>
+      </AK>
+      <AK>
+         <Key>uti_mdp</Key>
+      </AK>
+      <AK>
+         <Key>uti_ema</Key>
+      </AK>
+      <FK>
+         <Key>uti_id_1</Key>
+         <Reference>utilisateur(uti_id)</Reference>
+      </FK>
+   </Table>
+   <Table>
+      <Name>commande</Name>
+      <Column>
+         <Name>com_id</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+      </Column>
+      <Column>
+         <Name>com_date</Name>
+         <Type>DATE</Type>
+      </Column>
+      <Column>
+         <Name>com_tot</Name>
+         <Type>DECIMAL(15,2)  </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>com_statut</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>com_fac_adr</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>com_fac_cp</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>com_fac_vil</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>uti_id</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>com_id</Key>
+      </PK>
+      <FK>
+         <Key>uti_id</Key>
+         <Reference>utilisateur(uti_id)</Reference>
+      </FK>
+   </Table>
+   <Table>
+      <Name>livraison</Name>
+      <Column>
+         <Name>liv_id</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+      </Column>
+      <Column>
+         <Name>liv_dat</Name>
+         <Type>DATE</Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>liv_adr</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>liv_cp</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>liv_vil</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>com_id</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>liv_id</Key>
+      </PK>
+      <FK>
+         <Key>com_id</Key>
+         <Reference>commande(com_id)</Reference>
+      </FK>
+   </Table>
+   <Table>
+      <Name>produit</Name>
+      <Column>
+         <Name>pro_id</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+      </Column>
+      <Column>
+         <Name>pro_ref</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL UNIQUE</Property>
+      </Column>
+      <Column>
+         <Name>pro_lib</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>pro_des</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>pro_pri_uni</Name>
+         <Type>DECIMAL(5,2)  </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>pro_pho</Name>
+         <Type>VARCHAR(255) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>pro_sto</Name>
+         <Type>INT</Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>pro_tva</Name>
+         <Type>DECIMAL(15,2)  </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>pro_prx_ach</Name>
+         <Type>DECIMAL(15,2)  </Type>
+      </Column>
+      <Column>
+         <Name>fou_id</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>cat_id</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>pro_id</Key>
+      </PK>
+      <AK>
+         <Key>pro_ref</Key>
+      </AK>
+      <FK>
+         <Key>fou_id</Key>
+         <Reference>fournisseur(fou_id)</Reference>
+      </FK>
+      <FK>
+         <Key>cat_id</Key>
+         <Reference>Categorie(cat_id)</Reference>
+      </FK>
+   </Table>
+   <Table>
+      <Name>ligne_de_commande</Name>
+      <Column>
+         <Name>pro_id</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+      </Column>
+      <Column>
+         <Name>com_id</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+      </Column>
+      <Column>
+         <Name>pro_qte</Name>
+         <Type>TINYINT</Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>pro_pri_ven</Name>
+         <Type>DECIMAL(15,2)  </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>lig_com_tot</Name>
+         <Type>DECIMAL(15,2)  </Type>
+      </Column>
+      <PK>
+         <Key>pro_id, com_id</Key>
+      </PK>
+      <FK>
+         <Key>pro_id</Key>
+         <Reference>produit(pro_id)</Reference>
+      </FK>
+      <FK>
+         <Key>com_id</Key>
+         <Reference>commande(com_id)</Reference>
+      </FK>
+   </Table>
+</Database>
